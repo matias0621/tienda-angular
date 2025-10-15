@@ -1,13 +1,30 @@
 
 <ul>
+
+    <div>
+        <input type="text" placeholder="Filtrar por nombre" [(ngModel)]="nombreFiltro" >
+        <button (click)="filtrarPorNombre()" >Filtra por nombre</button>
+    </div>
+    
+    <div>
+        <button (click)="ordenarPorNombre(true)" >Ordenar por nombre ascendente</button>
+        <button (click)="ordenarPorNombre(false)" >Ordenar por nombre descendente</button>
+    </div>
+    <div>
+        <button (click)="ordenarPorPrecio(true)" >Ordenar por precio ascendente</button>
+        <button (click)="ordenarPorPrecio(false)" >Ordenar por precio descendente</button>
+    </div>
+
     @for (producto of productosList; track $index) {
         <li>
-            <h2>{{ producto.nombre }}</h2>
-            <p>Precio: {{ producto.precio }}</p>
-            <p>Descripción: {{ producto.descripcion }}</p>
-            <img [src]="producto.imagen" alt="{{ producto.nombre }}" width="200">
-            <button (click)="editarProducto(producto.id)">Editar</button>
-            <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+            <a [routerLink]="['/productos/', producto.id]">
+                <h2>{{ producto.nombre }}</h2>
+                <p>Precio: {{ producto.precio }}</p>
+                <p>Descripción: {{ producto.descripcion }}</p>
+                <img [src]="producto.imagen" alt="{{ producto.nombre }}" width="200">
+                <button (click)="editarProducto(producto.id)">Editar</button>
+                <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+            </a>
         </li>
     }
 </ul>

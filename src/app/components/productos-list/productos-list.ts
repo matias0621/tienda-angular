@@ -2,17 +2,21 @@ import { Component, OnInit, ApplicationRef, ChangeDetectorRef } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { Productos } from '../../services/productos';
 import IProductos from '../../models/Productos';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-productos-list',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, RouterLink],
   templateUrl: './productos-list.html',
   styleUrls: ['./productos-list.css'],
 })
 export class ProductosList implements OnInit {
   productosList: IProductos[] = [];
+  nombreFiltro: string = '';
+
 
   constructor(
     public productosService: Productos,
@@ -27,7 +31,7 @@ export class ProductosList implements OnInit {
   getProductos() {
     this.productosService.getAllProductos().subscribe({
       next: (res) => {
-        this.productosList = res;
+        this.productosList = [...res];
         console.log('Products loaded:', res);
         this.cdr.detectChanges();
       },
@@ -35,6 +39,37 @@ export class ProductosList implements OnInit {
         console.log('Error loading products:', err);
       },
     });
+  }
+
+  filtrarPorNombre() {
+    if (this.productosList.length == 0) {
+      alert('No hay productos para filtrar');
+    }
+    
+    this.productosList = this.productosList.filter(p => p.nombre.includes(this.nombreFiltro));
+    if (this.productosList.length == 0) {
+      alert('No se encontraron productos con ese nombre');
+      this.getProductos();
+    }
+  
+  }
+
+  ordenarPorNombre(ascendente: boolean) {
+    if (ascendente) {
+      this.productosList.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    }
+    else {
+      this.productosList.sort((a, b) => b.nombre.localeCompare(a.nombre));
+    }
+  }
+
+  ordenarPorPrecio(ascendente: boolean) {
+    if (ascendente) {
+      this.productosList.sort((a, b) => a.precio - b.precio);
+    }
+    else {
+      this.productosList.sort((a, b) => b.precio - a.precio);
+    }
   }
 
   editarProducto(id: string) {

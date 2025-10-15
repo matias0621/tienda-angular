@@ -1,1 +1,11 @@
-<p>productos-details works!</p>
+@if (producto == null) {
+    <div> No se encontro un producto </div>
+}
+@else {
+    <div>
+        <h1> {{producto.nombre}} </h1>
+        <h2> {{producto.imagen}} </h2>
+        <h3> {{producto.descripcion}} </h3>
+        <h4> {{producto.precio}} </h4>
+    </div>
+}
