@@ -2,7 +2,7 @@
   "productos": [
     {
       "id": "p001",
-      "nombre": "Camiseta básica",
+      "nombre": "Camiseta Piola",
       "precio": 19.99,
       "descripcion": "Camiseta de algodón suave, ideal para uso diario.",
       "imagen": "https://example.com/images/camiseta_basica.jpg"
@@ -27,36 +27,6 @@
       "precio": 89.9,
       "descripcion": "Campera liviana y resistente al agua, ideal para el invierno.",
       "imagen": "https://example.com/images/campera_impermeable.jpg"
-    },
-    {
-      "id": "p005",
-      "precio": 15,
-      "descripcion": "Gorra con visera curva y diseño minimalista.",
-      "imagen": "https://example.com/images/gorra_urbana.jpg"
-    },
-    {
-      "id": "db5f",
-      "nombre": "",
-      "precio": "",
-      "descripcion": "",
-      "imagen": ""
-    },
-    {
-      "id": "c4af",
-      "nombre": "",
-      "precio": "",
-      "descripcion": "",
-      "imagen": ""
-    },
-    {
-      "id": "600a",
-      "nombre": "Pene de goma",
-      "precio": 9999,
-      "descripcion": "El mejor pito de goma wacho",
-      "imagen": "https://i.pinimg.com/1200x/1c/8f/b9/1c8fb9feaf1267dec6cfd42660f5e14d.jpg"
     }
   ]
 }
-
-
-

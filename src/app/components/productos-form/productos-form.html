@@ -1,15 +1,16 @@
-<form (submit)="enviarProducto()" [formGroup]="productoForm">
+@if (hayId != undefined) {
+<form (submit)="actualizarProducto()" [formGroup]="productoForm">
     <fieldset>
         <legend>Formulario de Productos</legend>
         <div>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" formControlName="nombre" name="nombre">
         </div>
-        
+
         @if (productoForm.get('name')?.invalid && productoForm.get('name')?.touched) {
-            <div class="error">
-                El nombre es obligatorio.
-            </div>
+        <div class="error">
+            El nombre es obligatorio.
+        </div>
         }
 
         <div>
@@ -18,9 +19,9 @@
         </div>
 
         @if (productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched) {
-            <div class="error">
-                El precio es obligatorio.
-            </div>
+        <div class="error">
+            El precio es obligatorio.
+        </div>
         }
         <div>
             <label for="descripcion">Descripción:</label>
@@ -28,9 +29,9 @@
         </div>
 
         @if (productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched) {
-            <div class="error">
-                El descripcion es obligatorio.
-            </div>
+        <div class="error">
+            El descripcion es obligatorio.
+        </div>
         }
 
         <div>
@@ -39,11 +40,63 @@
         </div>
 
         @if (productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched) {
-            <div class="error">
-                El imagen es obligatorio.
-            </div>
+        <div class="error">
+            El imagen es obligatorio.
+        </div>
         }
 
         <button type="submit">Guardar Producto</button>
     </fieldset>
 </form>
+}
+@else {
+<form (submit)="enviarProducto()" [formGroup]="productoForm">
+    <fieldset>
+        <legend>Formulario de Productos</legend>
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" formControlName="nombre" name="nombre">
+        </div>
+
+        @if (productoForm.get('name')?.invalid && productoForm.get('name')?.touched) {
+        <div class="error">
+            El nombre es obligatorio.
+        </div>
+        }
+
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" formControlName="precio" name="precio">
+        </div>
+
+        @if (productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched) {
+        <div class="error">
+            El precio es obligatorio.
+        </div>
+        }
+        <div>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" formControlName="descripcion" name="descripcion"></textarea>
+        </div>
+
+        @if (productoForm.get('descripcion')?.invalid && productoForm.get('descripcion')?.touched) {
+        <div class="error">
+            El descripcion es obligatorio.
+        </div>
+        }
+
+        <div>
+            <label for="imagen">Imagen URL:</label>
+            <input type="text" id="imagen" formControlName="imagen" name="imagen">
+        </div>
+
+        @if (productoForm.get('imagen')?.invalid && productoForm.get('imagen')?.touched) {
+        <div class="error">
+            El imagen es obligatorio.
+        </div>
+        }
+
+        <button type="submit">Guardar Producto</button>
+    </fieldset>
+</form>
+}
